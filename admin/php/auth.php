@@ -32,7 +32,7 @@ if (isset($_POST["email"]) && ($_POST["password"])) {
                 $_SESSION["user_id"] = $user_id;
                 $_SESSION["user_email"] = $user_email;
                 $_SESSION["user_password"] = $user_password;
-                header("Location: ../admin.php");
+                header("Location: ../dashboard.php");
             } else {
                 $em = "incorrect User name or password";
                 header("Location: ../login.php?error=$em");

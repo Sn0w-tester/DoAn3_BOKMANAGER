@@ -13,3 +13,17 @@ function get_all_book($conn){
 
     return $books;
 }
+
+function get_book($conn, $id){
+    $sql = "SELECT * FROM books WHERE id=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([ $id ]);
+
+    if ($stmt->rowCount() > 0){
+        $book = $stmt->fetch();
+    } else{
+        $book = 0;
+    }
+
+    return $book;
+}
