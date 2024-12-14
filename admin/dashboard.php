@@ -61,10 +61,29 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                     </div>
                 </div>
             </nav>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
+                    aria-describedby="basic-addon2">
+                <span class="input-group-text" id="basic-addon2">@example.com</span>
+            </div>
+            <?php if (isset($_GET['error'])) { ?>
+                <div class="alert alert-danger" role="alert">
+                    <?= htmlspecialchars($_GET['error']); ?>
+                </div>
+            <?php } ?>
+
+            <?php if (isset($_GET['success'])) { ?>
+                <div class="alert alert-success" role="alert">
+                    <?= htmlspecialchars($_GET['success']); ?>
+                </div>
+            <?php } ?>
 
             <?php if ($books == 0) { ?>
-                empty
+                <div class="alert alert-warning text-center p-5" role="alert">
+                    There is no book in the database
+                </div>
             <?php } else { ?>
+
                 <!-- List of all books -->
                 <h4 class="mt-5">All books</h4>
                 <table class="table table-bordered shadow">
@@ -117,8 +136,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                                     ?>
                                 </td>
                                 <td>
-                                    <a href="edit_book.php?id=<?=$book['id']?>" class="btn btn-warning">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
+                                    <a href="edit_book.php?id=<?= $book['id'] ?>" class="btn btn-warning">Edit</a>
+                                    <a href="php/delete_book.php?id=<?= $book['id'] ?>" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -127,7 +146,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
             <?php } ?>
 
             <?php if ($categories == 0) { ?>
-                empty
+                <div class="alert alert-warning text-center p-5" role="alert">
+                    There is no category in the database
+                </div>
             <?php } else { ?>
                 <!-- List of all category -->
                 <h4 class="mt-5">All Categories</h4>
@@ -149,8 +170,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                                 <td><?= $j ?></td>
                                 <td><?= $category['name'] ?></td>
                                 <td>
-                                    <a href="edit_category.php?id=<?=$category['id']?>" class="btn btn-warning">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
+                                    <a href="edit_category.php?id=<?= $category['id'] ?>" class="btn btn-warning">Edit</a>
+                                    <a href="php/delete_category.php?id=<?= $category['id'] ?>" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -159,7 +180,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
             <?php } ?>
 
             <?php if ($authors == 0) { ?>
-                empty
+                <div class="alert alert-warning text-center p-5" role="alert">
+                    There is no auther in the database
+                </div>
             <?php } else { ?>
                 <!-- List of all Authors -->
                 <h4 class="mt-5">All Authors</h4>
@@ -181,8 +204,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                                 <td><?= $k ?></td>
                                 <td><?= $author['name'] ?></td>
                                 <td>
-                                    <a href="edit_author.php?id=<?=$author['id']?>" class="btn btn-warning">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
+                                    <a href="edit_author.php?id=<?= $author['id'] ?>" class="btn btn-warning">Edit</a>
+                                    <a href="php/delete_author.php?id=<?= $author['id'] ?>" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         <?php } ?>
